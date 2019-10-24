@@ -48,7 +48,10 @@ s2 = s2 + " else"
 list1 = [1, 2, 3, 4, 5]
 list2 = list1
 
-list2[4] = 82992
+list2[4.8] = 82992
+s2.ex
+
+s2 = s
 
 
 class Counter:

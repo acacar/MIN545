@@ -75,17 +75,36 @@ class ShoppingCart:
         return Invoice(self)
 
 class Invoice:
-         """An invoice"""
-         def __init__(self,cart):
-             self._balance = 0
-             for product in self._cart.get_items():
-                 self._balance += product.get_price()
+    """An invoice"""
+    def __init__(self,cart):
+        self._balance = 0
+        for product in self._cart.get_items():
+            self._balance += product.get_price()
 
-         def get_balance(self):
-             return self._balance
+    def get_balance(self):
+        return self._balance
 
-         def pay(self,amount):
-             self._balance -= amount
+    def pay(self,amount):
+        self._balance -= amount
+
+
+
+class ElectronicProduct(Product):
+    """An electronic product"""
+
+    COST_PER_MB = 10.0 # TL/MB
+    
+    def __init__(self, name, upc, size):
+        super().__init__(name, upc)
+        self._size = size # size in megabytes
+
+    def get_price(self):
+        """Returns price of the eProduct"""
+        return ElectronicProduct.COST_PER_MB * self._size
+
+    def get_size(self):
+        """Returns the size of the eProduct in MB"""
+        return self._size
 
              
 ## My Sample Data
@@ -99,13 +118,15 @@ userlist = [
 catalog = [
     Product("Laptop", 32423488),
     Product("Gold Pen", 98237498),
-    Product("PS4", 9283409)
+    Product("PS4", 9283409),
+    ElectronicProduct("Call of Duty", 230084802, 32000)
 ]
     
 userlist[0].open_cart()
 userlist[0]._cart.add_product(catalog[0])
 userlist[0]._cart.add_product(catalog[1])
+userlist[0]._cart.add_product(catalog[3])
 
 print("Ali bought:")
 for item in userlist[0].get_cart().get_items():
-    print(item.get_name())
+    print(item.get_name() + ": " + str(item.get_price()))
