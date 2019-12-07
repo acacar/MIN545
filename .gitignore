@@ -1,3 +1,5 @@
 .dir-locals.el
 flycheck_.dir-locals.elc
 .vscode
+*__pycache__
+.DS_Store
