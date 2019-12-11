@@ -62,15 +62,15 @@ class LinkedList:
         return self.size
 
     def __str__(self):
-        temp = ""
+        temp = "["
         current = self.head
         while current is not None:
             temp += str(current) + ", "
             current = current.next
         if len(temp) > 0:
-            return temp[:-2]
+            return temp[:-2] + "]"
         else:
-            return temp
+            return temp + "]"
 
     def __contains__(self, value):
         current = self.head
@@ -94,15 +94,15 @@ def test_list():
     mylist.insert(value=111, pos=0)
     print("After prepend 111:", mylist)
     mylist.insert(value=222, pos=5)
-    print("After insert 222 @5", mylist)
+    print("After insert 222 @5:", mylist)
     mylist.insert(value=999, pos=len(mylist))
-    print("After insert 999 at end", mylist)
+    print("After insert 999 at end:", mylist)
     mylist.delete(pos=5)
-    print("After deleting @5", mylist)
+    print("After deleting @5:", mylist)
     mylist.delete(pos=0)
-    print("After deleting @0", mylist)
+    print("After deleting @0:", mylist)
     mylist.delete(pos=len(mylist)-1)
-    print("After deleting last", mylist)
+    print("After deleting last:", mylist)
 
 
 test_list()
