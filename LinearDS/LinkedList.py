@@ -62,15 +62,14 @@ class LinkedList:
         return self.size
 
     def __str__(self):
-        temp = "["
+        temp = ""
         current = self.head
         while current is not None:
             temp += str(current) + ", "
             current = current.next
-        if len(temp) > 0:
-            return temp[:-2] + "]"
-        else:
-            return temp + "]"
+        if temp == "":
+            return "[ ]"
+        return "[" + temp[:-2] + "]"
 
     def __contains__(self, value):
         current = self.head
@@ -105,4 +104,4 @@ def test_list():
     print("After deleting last:", mylist)
 
 
-test_list()
+
